@@ -3,7 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.typeParseUpdate = exports.typeParse = void 0;
+exports.typeParseUpdate = typeParseUpdate;
+exports.typeParse = void 0;
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -85,7 +86,9 @@ var typeParse = function typeParse(obj) {
 
 exports.typeParse = typeParse;
 
-var typeParseUpdate = function typeParseUpdate() {
+function typeParseUpdate() {
+  var _this = this;
+
   var value = {};
   return {
     put: function put(obj) {
@@ -99,6 +102,7 @@ var typeParseUpdate = function typeParseUpdate() {
 
         var _b, _c;
       }));
+      return _this;
     },
     add: function add(obj) {
       value = __assign({}, value, map_object(obj, function (_a) {
@@ -111,11 +115,13 @@ var typeParseUpdate = function typeParseUpdate() {
 
         var _b, _c;
       }));
+      return _this;
     },
     "delete": function _delete(key) {
       value = __assign({}, value, (_a = {}, _a[key] = {
         "Action": "DELETE"
       }, _a));
+      return _this;
 
       var _a;
     },
@@ -123,9 +129,7 @@ var typeParseUpdate = function typeParseUpdate() {
       return value;
     }
   };
-};
-
-exports.typeParseUpdate = typeParseUpdate;
+}
 
 var identifyAttributeType = function identifyAttributeType(value) {
   var type = 'NULL';

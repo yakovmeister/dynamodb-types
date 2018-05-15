@@ -1,8 +1,9 @@
 import { expect } from 'chai'
-import { typeParse } from '../src/dynamo'
+import { typeParse, typeParseUpdate } from '../src/dynamo'
+import { map_object } from '../src/utils/map_object'
 
-describe('', () => {
-  it('', () => {
-    typeParse({})
+describe('DynamoDB-Types', () => {
+  it('should convert json to attributevalueupdate format', () => {
+
   })
 })

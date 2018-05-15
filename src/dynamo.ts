@@ -36,6 +36,8 @@ const typeParseUpdate = () => {
           }
         }))
       }
+
+      return this
     },
     add: (obj: any) => {
       value = {
@@ -49,6 +51,8 @@ const typeParseUpdate = () => {
           }
         }))
       }
+
+      return this
     },
     delete: (key: string) => {
       value = {
@@ -57,6 +61,8 @@ const typeParseUpdate = () => {
           "Action": "DELETE"
         }
       }
+
+      return this
     },
     getValue: () => {
       return value
@@ -108,8 +114,8 @@ const convertToDynamoSyntax = (value: any, key?: string) => {
 }
 
 const iterateAndConvertObject = (obj: any) => {
-  map_object(obj, ([key, value]) => {
-    if (Object.keys(value)) {
+  return map_object(obj, ([key, value]) => {
+    if (typeof value === 'object' && !Array.isArray(value)) {
       return {
         [key]: typeParse(value)
       }
