@@ -1,12 +1,24 @@
 import { iterateAndConvertObject } from './utils/helpers'
 import { typeParseUpdate } from './update'
 
-const typeParse = (obj: any) => {
-  if (!Object.keys(obj)) {
-    return
+export class DynamoTypes {
+  /**
+   * @static
+   * @see typeParseUpdate
+   */
+  static parseUpdate = typeParseUpdate
+
+  /**
+   * Parse JSON object to DynamoDB recognized JSON object.
+   * @static
+   * @param obj normal JSON object
+   * @returns DynamoDB recognized JSON object
+   */
+  static parse(obj: any) {
+    if (!Object.keys(obj)) {
+      return
+    }
+
+    return iterateAndConvertObject(obj, DynamoTypes.parse)
   }
-
-  return iterateAndConvertObject(obj, typeParse)
 }
-
-export { typeParse, typeParseUpdate }
