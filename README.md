@@ -76,6 +76,9 @@ npm install
   
 ## Release History
 
+* 1.0.3
+    * fixed issue with list
+    * Corrected Backward compatibility errors
 * 1.0.0
     * Initial Release
 
@@ -85,7 +88,7 @@ Jacob Baring – [@yakovmeister](https://twitter.com/yakovmeister) – so@tfwno.
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+[https://github.com/yakovmeister/](https://github.com/yakovmeister/)
 
 ## Contributing
 

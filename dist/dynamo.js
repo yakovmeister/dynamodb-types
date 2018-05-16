@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 require("core-js/shim");
 
 require("regenerator-runtime/runtime");
@@ -103,9 +105,9 @@ var identifyAttributeType = function identifyAttributeType(value) {
       type = 'NS';
     } else if (isStringSet(value)) {
       type = 'SS';
+    } else {
+      type = 'L';
     }
-
-    type = 'L';
   } else if (isBin(value)) {
     type = 'B';
   } else if (isBoolean(value)) {
@@ -146,7 +148,7 @@ var iterateAndConvertObject = function iterateAndConvertObject(obj, callback) {
     var key = _a[0],
         value = _a[1];
 
-    if (babelHelpers.typeof(value) === 'object' && !Array.isArray(value)) {
+    if (_typeof(value) === 'object' && !Array.isArray(value)) {
       return _b = {}, _b[key] = callback(value), _b;
     }
 
@@ -161,7 +163,7 @@ var iterateAndDecodeObject = function iterateAndDecodeObject(obj, callback) {
     var key = _a[0],
         value = _a[1];
 
-    if (babelHelpers.typeof(value) === 'object' && !Array.isArray(value)) {
+    if (_typeof(value) === 'object' && !Array.isArray(value)) {
       return _b = {}, _b[key] = callback(value), _b;
     }
 
@@ -253,7 +255,7 @@ function () {
 
 
   DynamoTypes.parse = function (obj) {
-    if (babelHelpers.typeof(obj) !== 'object') {
+    if (_typeof(obj) !== 'object') {
       return;
     }
 
@@ -268,7 +270,7 @@ function () {
 
 
   DynamoTypes.decode = function (obj) {
-    if (babelHelpers.typeof(obj) !== 'object') {
+    if (_typeof(obj) !== 'object') {
       return;
     }
 
