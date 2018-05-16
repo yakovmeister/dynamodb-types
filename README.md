@@ -18,7 +18,7 @@ npm install --save dynamodb-types
 
 ```javascript   
 
-let { DynamoTypes } = require('dynamodb-types')
+let DynamoTypes = require('dynamodb-types')
 
 DynamoTypes.parse({
   id: 1,
