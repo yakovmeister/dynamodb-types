@@ -79,9 +79,9 @@ npm install
 * 1.0.0
     * Initial Release
 
-## Meta
+## Contributor
 
-Your Name – [@yakovmeister](https://twitter.com/yakovmeister) – so@tfwno.gf
+Jacob Baring – [@yakovmeister](https://twitter.com/yakovmeister) – so@tfwno.gf
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
