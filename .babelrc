@@ -4,6 +4,6 @@
     "@babel/preset-stage-3"
   ],
   "plugins": [
-    "@babel/plugin-external-helpers"
+    "@babel/plugin-external-helpers"    
   ]
 }
