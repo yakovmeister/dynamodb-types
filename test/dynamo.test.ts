@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import DynamoTypes from '../src/dynamo'
+import DynamoTypes from '../dist/dynamo.min'
 
 describe('DynamoDB-Types', () => {
   it('should convert json to attributevalueupdate format', () => {
