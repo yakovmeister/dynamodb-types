@@ -11,12 +11,23 @@
     "transpile": "babel dist/dynamo.js --out-file dist/dynamo.js --presets=@babel/preset-env,@babel/preset-stage-3",
     "minify": "uglifyjs dist/dynamo.js --output dist/dynamo.min.js"
   },
-  "keywords": ["dynamo", "encode", "decode", "convert", "attributevalue", "attributevalueupdate", "aws", "dynamodb", "json" ],
+  "keywords": [
+    "dynamo",
+    "encode",
+    "decode",
+    "convert",
+    "attributevalue",
+    "attributevalueupdate",
+    "aws",
+    "dynamodb",
+    "json"
+  ],
   "author": "Jacob Baring <owari@waifu.club>",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.47",
     "@babel/core": "^7.0.0-beta.47",
+    "@babel/plugin-external-helpers": "^7.0.0-beta.47",
     "@babel/preset-env": "^7.0.0-beta.47",
     "@babel/preset-stage-3": "^7.0.0-beta.47",
     "@types/chai": "^4.1.3",
