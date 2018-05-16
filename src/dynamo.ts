@@ -1,5 +1,5 @@
 import '@babel/polyfill'
-import { iterateAndConvertObject, iterateAndDecodeObject } from './utils/helpers'
+import { iterateAndProcessObject, convertToDynamoSyntax } from './utils/helpers'
 import { typeParseUpdate } from './update'
 
 export default class DynamoTypes {
@@ -20,7 +20,11 @@ export default class DynamoTypes {
       return
     }
 
-    return iterateAndConvertObject(obj, DynamoTypes.parse)
+    return iterateAndProcessObject(
+      obj, 
+      DynamoTypes.parse, 
+      convertToDynamoSyntax
+    )
   }
 
   /**
@@ -34,6 +38,6 @@ export default class DynamoTypes {
       return
     }
 
-    return iterateAndDecodeObject(obj, DynamoTypes.decode)
+    return iterateAndProcessObject(obj, DynamoTypes.decode)
   }
 }

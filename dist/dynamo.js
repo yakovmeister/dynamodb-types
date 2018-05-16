@@ -117,7 +117,7 @@ var identifyAttributeType = function identifyAttributeType(value) {
   } else if (isString(value)) {
     type = 'S';
   } else if (isNull(value)) ;else {
-    throw new Error('Invalid type.');
+    throw new Error("DynamoDB doesn't support the type of given value.");
   }
 
   return type;
@@ -133,17 +133,7 @@ var convertToDynamoSyntax = function convertToDynamoSyntax(value, key) {
   var _a, _b, _c;
 };
 
-var decodeDynamoSyntax = function decodeDynamoSyntax(value, key) {
-  if (!key) {
-    return value;
-  }
-
-  return _a = {}, _a[key] = value, _a;
-
-  var _a;
-};
-
-var iterateAndConvertObject = function iterateAndConvertObject(obj, callback) {
+var iterateAndProcessObject = function iterateAndProcessObject(obj, callback, processCallback) {
   return map_object(obj, function (_a) {
     var key = _a[0],
         value = _a[1];
@@ -152,22 +142,11 @@ var iterateAndConvertObject = function iterateAndConvertObject(obj, callback) {
       return _b = {}, _b[key] = callback(value), _b;
     }
 
-    return convertToDynamoSyntax(value, key);
-
-    var _b;
-  });
-};
-
-var iterateAndDecodeObject = function iterateAndDecodeObject(obj, callback) {
-  return map_object(obj, function (_a) {
-    var key = _a[0],
-        value = _a[1];
-
-    if (_typeof(value) === 'object' && !Array.isArray(value)) {
-      return _b = {}, _b[key] = callback(value), _b;
+    if (!processCallback) {
+      return value;
     }
 
-    return decodeDynamoSyntax(value);
+    return processCallback(value, key);
 
     var _b;
   });
@@ -259,7 +238,7 @@ function () {
       return;
     }
 
-    return iterateAndConvertObject(obj, DynamoTypes.parse);
+    return iterateAndProcessObject(obj, DynamoTypes.parse, convertToDynamoSyntax);
   };
   /**
    * Decode DynamoDB recognized JSON object to JSON object.
@@ -274,7 +253,7 @@ function () {
       return;
     }
 
-    return iterateAndDecodeObject(obj, DynamoTypes.decode);
+    return iterateAndProcessObject(obj, DynamoTypes.decode);
   };
   /**
    * @static

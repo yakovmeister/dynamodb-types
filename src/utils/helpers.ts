@@ -35,7 +35,7 @@ export const identifyAttributeType = (value: any) : AttributeType => {
   } else if (isNull(value)) {
     // nothing to do.
   } else {
-    throw new Error('Invalid type.')
+    throw new Error(`DynamoDB doesn't support the type of given value.`)
   }
 
   return type
@@ -55,17 +55,7 @@ export const convertToDynamoSyntax = (value: any, key?: string) => {
   }
 }
 
-export const decodeDynamoSyntax = (value: any, key?: string) => {
-  if (!key) {
-    return value
-  }
-
-  return {
-    [key]: value
-  }
-}
-
-export const iterateAndConvertObject = (obj: any, callback: any) => {
+export const iterateAndProcessObject = (obj: any, callback: any, processCallback?: any) => {
   return map_object(obj, ([key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       return {
@@ -73,18 +63,10 @@ export const iterateAndConvertObject = (obj: any, callback: any) => {
       }
     }
 
-    return convertToDynamoSyntax(value, key)
-  })
-}
-
-export const iterateAndDecodeObject = (obj: any, callback: any) => {
-  return map_object(obj, ([key, value]) => {
-    if (typeof value === 'object' && !Array.isArray(value)) {
-      return {
-        [key]: callback(value)
-      }
+    if (!processCallback) {
+      return value
     }
 
-    return decodeDynamoSyntax(value)
+    return processCallback(value, key)
   })
 }
