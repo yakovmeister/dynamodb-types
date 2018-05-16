@@ -1,8 +1,8 @@
 {
   "name": "dynamodb-types",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "easiest way to convert your JSON to dynamo db types format",
-  "main": "index.js",
+  "main": "dist/dynamo.min.js",
   "scripts": {
     "test": "mocha -r ts-node/register test/**.test.ts",
     "rollup": "rollup -c",
