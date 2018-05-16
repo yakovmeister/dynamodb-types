@@ -21,8 +21,9 @@ export const identifyAttributeType = (value: any) : AttributeType => {
       type = 'NS'
     } else if (isStringSet(value)) {
       type = 'SS'
+    } else {
+      type = 'L'
     }
-    type = 'L'
   } else if (isBin(value)) {
     type = 'B'
   } else if (isBoolean(value)) {

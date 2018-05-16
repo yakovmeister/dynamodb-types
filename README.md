@@ -76,7 +76,8 @@ npm install
   
 ## Release History
 
-* 1.0.2
+* 1.0.3
+    * fixed issue with list
     * Corrected Backward compatibility errors
 * 1.0.0
     * Initial Release

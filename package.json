@@ -1,6 +1,6 @@
 {
   "name": "dynamodb-types",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "easiest way to convert your JSON to dynamo db types format",
   "main": "dist/dynamo.min.js",
   "scripts": {

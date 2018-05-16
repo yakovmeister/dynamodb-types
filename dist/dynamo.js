@@ -105,9 +105,9 @@ var identifyAttributeType = function identifyAttributeType(value) {
       type = 'NS';
     } else if (isStringSet(value)) {
       type = 'SS';
+    } else {
+      type = 'L';
     }
-
-    type = 'L';
   } else if (isBin(value)) {
     type = 'B';
   } else if (isBoolean(value)) {
