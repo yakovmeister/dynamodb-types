@@ -7,19 +7,10 @@ const identifyValue = (value: any) => {
   }
 }
 
-const put = (obj: any) => {
+const write = (obj: any, action = 'ADD') => {
   return map_object(obj, ([key, value]) => ({
     [key]: {
-      "Action": "PUT",
-      "Value": identifyValue(value)
-    }
-  }))
-}
-
-const add = (obj: any) => {
-  return map_object(obj, ([key, value]) => ({
-    [key]: {
-      "Action": "ADD",
+      "Action": action,
       "Value": identifyValue(value)
     }
   }))
@@ -33,6 +24,12 @@ const del = (key: string) => {
   }
 }
 
+/**
+ * Provide methods that allows you to generate an AttributeValueUpdate
+ * JSON Format
+ * @constant
+ * @returns instantiated class with AttributeValueUpdate Generator methods.
+ */
 export const typeParseUpdate = (() => {
   return new class {
     value = {}
@@ -40,7 +37,7 @@ export const typeParseUpdate = (() => {
     put(obj: any) {
       this.value = {
         ...this.value,
-        ...put(obj)
+        ...write(obj, 'PUT')
       }
 
       return this
@@ -49,7 +46,7 @@ export const typeParseUpdate = (() => {
     add(obj: any) {
       this.value = {
         ...this.value,
-        ...add(obj)
+        ...write(obj)
       }
 
       return this

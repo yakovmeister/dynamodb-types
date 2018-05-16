@@ -1,7 +1,7 @@
-import { iterateAndConvertObject } from './utils/helpers'
+import { iterateAndConvertObject, iterateAndDecodeObject } from './utils/helpers'
 import { typeParseUpdate } from './update'
 
-export class DynamoTypes {
+export default class DynamoTypes {
   /**
    * @static
    * @see typeParseUpdate
@@ -15,10 +15,24 @@ export class DynamoTypes {
    * @returns DynamoDB recognized JSON object
    */
   static parse(obj: any) {
-    if (!Object.keys(obj)) {
+    if (typeof obj !== 'object') {
       return
     }
 
     return iterateAndConvertObject(obj, DynamoTypes.parse)
+  }
+
+  /**
+   * Decode DynamoDB recognized JSON object to JSON object.
+   * @static
+   * @param obj DynamoDB recognized JSON object
+   * @returns normal JSON object
+   */
+  static decode(obj: any) {
+    if (typeof obj !== 'object') {
+      return
+    }
+
+    return iterateAndDecodeObject(obj, DynamoTypes.decode)
   }
 }

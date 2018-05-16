@@ -1,7 +1,7 @@
 {
   "name": "dynamodb-types",
-  "version": "0.1.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "easiest way to convert your JSON to dynamo db types format",
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register test/**.test.ts",
@@ -11,13 +11,12 @@
     "transpile": "babel dist/dynamo.js --out-file dist/dynamo.js --presets=@babel/preset-env,@babel/preset-stage-3",
     "minify": "uglifyjs dist/dynamo.js --output dist/dynamo.min.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["dynamo", "encode", "decode", "convert", "attributevalue", "attributevalueupdate", "aws", "dynamodb", "json" ],
+  "author": "Jacob Baring <owari@waifu.club>",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.47",
     "@babel/core": "^7.0.0-beta.47",
-    "@babel/plugin-external-helpers": "^7.0.0-beta.47",
     "@babel/preset-env": "^7.0.0-beta.47",
     "@babel/preset-stage-3": "^7.0.0-beta.47",
     "@types/chai": "^4.1.3",

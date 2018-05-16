@@ -40,7 +40,6 @@ export const identifyAttributeType = (value: any) : AttributeType => {
   return type
 }
 
-
 export const convertToDynamoSyntax = (value: any, key?: string) => {
   if (!key) {
     return {
@@ -55,6 +54,16 @@ export const convertToDynamoSyntax = (value: any, key?: string) => {
   }
 }
 
+export const decodeDynamoSyntax = (value: any, key?: string) => {
+  if (!key) {
+    return value
+  }
+
+  return {
+    [key]: value
+  }
+}
+
 export const iterateAndConvertObject = (obj: any, callback: any) => {
   return map_object(obj, ([key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
@@ -64,5 +73,17 @@ export const iterateAndConvertObject = (obj: any, callback: any) => {
     }
 
     return convertToDynamoSyntax(value, key)
+  })
+}
+
+export const iterateAndDecodeObject = (obj: any, callback: any) => {
+  return map_object(obj, ([key, value]) => {
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      return {
+        [key]: callback(value)
+      }
+    }
+
+    return decodeDynamoSyntax(value)
   })
 }
