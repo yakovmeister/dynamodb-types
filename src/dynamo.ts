@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import { iterateAndConvertObject, iterateAndDecodeObject } from './utils/helpers'
 import { typeParseUpdate } from './update'
 
