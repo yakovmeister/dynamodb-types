@@ -1,6 +1,6 @@
 import '@babel/polyfill'
-import { iterateAndProcessObject, convertToDynamoSyntax } from './utils/helpers'
 import { typeParseUpdate } from './update'
+import { iterateAndProcessObject, convertToDynamoSyntax } from './utils/helpers'
 
 export default class DynamoTypes {
   /**

@@ -1,0 +1,7 @@
+/**
+ * Iterate through each object member and apply actions specified from callback
+ * @param obj JSON Object to be iterated
+ * @param callback callback containing the action to be done on each member
+ * @returns JSON Object
+ */
+export declare const map_object: <T>(obj: T, callback: (value: [string, any], index?: number, array?: [string, any][]) => any) => any;
