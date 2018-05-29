@@ -3,6 +3,7 @@
   "version": "1.0.4",
   "description": "easiest way to convert your JSON to dynamo db types format",
   "main": "dist/dynamo.min.js",
+  "types": "dist/dynamo.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register test/**.test.ts",
     "rollup": "rollup -c",
